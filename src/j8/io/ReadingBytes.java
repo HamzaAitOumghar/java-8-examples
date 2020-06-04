@@ -21,7 +21,7 @@ public class ReadingBytes {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        
         try (InputStream is = new FileInputStream(new File(path));
              GZIPInputStream gis=new GZIPInputStream(is);
              DataInputStream dis = new DataInputStream(gis)) {
