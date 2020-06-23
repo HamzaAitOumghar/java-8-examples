@@ -33,6 +33,7 @@ public class BarrierInAction {
             }
         }
 
+
         ExecutorService executorService = Executors.newFixedThreadPool(4);
         CyclicBarrier cyclicBarrier = new CyclicBarrier(4);
         List<Future<String>> futures = new ArrayList<>();
