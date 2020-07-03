@@ -7,7 +7,7 @@ public class LocalizationDemo {
 
     public static void main(String[] args) {
 
-        Locale locale = Locale.getDefault();
+        Locale locale = Locale.ENGLISH;
         ResourceBundle resBundel = ResourceBundle.getBundle("j8.localization.ResourceBundle",locale);
         System.out.println(resBundel.getString("greeting"));
 
