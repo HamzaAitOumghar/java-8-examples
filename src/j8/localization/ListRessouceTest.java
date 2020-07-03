@@ -8,7 +8,7 @@ public class ListRessouceTest  {
     public static void main(String[] args) {
 
         Locale locale = Locale.ITALY;
-        ResourceBundle resourceBundle = ResourceBundle.getBundle("j8.localization.ResBundle",locale);
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("j8.localization.ResBundle",locale,new TalkativeResourceBundleControl());
         printMovieDetails(resourceBundle);
     }
 

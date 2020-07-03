@@ -2,7 +2,7 @@ package j8.localization;
 
 import java.util.ListResourceBundle;
 
-public class ResBundle_it_IT extends ListResourceBundle {
+public class ResBundle_it extends ListResourceBundle {
 
     @Override
     protected Object[][] getContents() {
