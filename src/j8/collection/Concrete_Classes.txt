@@ -1,0 +1,10 @@
+ArrayList : resizable array , fast to search slow to insert or delete
+LinkedList : implements a doubly linkedlist data structure , fast to insert or delete , slow
+for searching
+======================================================================================
+HashSet: does not allow storing duplicate elements , does not maintain any order
+TreeSet : does not allow storing duplicates but unlike HashSet it stores elements in sorting
+order
+======================================================================================
+HashMap : Stores key and value pairs,does not store the elements in any order
+TreeMap : unlike hashmap , treeMap stores elements in a sorted order
