@@ -1,11 +1,12 @@
 package j8.stream;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class StreamTest2 {
+public class StreamDishTest {
 
     public static void main(String[] args) {
 
@@ -33,6 +34,19 @@ public class StreamTest2 {
 
         dishes = menu.stream().filter(moreThan300Calories).skip(3).collect(Collectors.toList());
         System.out.println(dishes);
+
+        //reducing
+        // number of dishes :
+        int numberOfDishes = menu.stream().map(dish ->1 ).reduce(0,Integer::sum);
+        System.out.println(numberOfDishes);
+
+        //flattening stream
+
+        List<String> words = new ArrayList<>();
+        words.add("Hello");words.add("world");
+        List<String> result = words.stream().flatMap(s-> Arrays.stream(s.split(""))).collect(Collectors.toList());
+        System.out.println(result);
+
 
     }
 }
