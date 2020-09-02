@@ -1,9 +1,10 @@
 package j8.stream;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import j8.stream.model.Currency;
+import j8.stream.model.Trader;
+import j8.stream.model.Transaction;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class TransactionTest {
@@ -15,12 +16,12 @@ public class TransactionTest {
         Trader alan = new Trader("Alan", "Cambridge");
         Trader brian = new Trader("Brian", "Cambridge");
         List<Transaction> transactions = Arrays.asList(
-                new Transaction(brian, 2011, 300),
-                new Transaction(raoul, 2012, 1000),
-                new Transaction(raoul, 2011, 400),
-                new Transaction(mario, 2012, 710),
-                new Transaction(mario, 2012, 700),
-                new Transaction(alan, 2012, 950)
+                new Transaction(brian, 2011, 300,Currency.EUR),
+                new Transaction(raoul, 2012, 1000,Currency.EUR),
+                new Transaction(raoul, 2011, 400,Currency.GBP),
+                new Transaction(mario, 2012, 710,Currency.USD),
+                new Transaction(mario, 2012, 700,Currency.USD),
+                new Transaction(alan, 2012, 950,Currency.USD)
         );
 
         // Find all transactions in the year 2011 and sort them by value (small to high).
@@ -41,5 +42,23 @@ public class TransactionTest {
         //the transaction with the smallest value.
         Transaction smallestTransaction = transactions.stream().reduce((t1, t2) ->t1.getValue() < t2.getValue() ? t1 : t2).orElse(null);
         System.out.println(smallestTransaction);
+
+
+        //grouping transaction by currrency : imperative style
+        Map<Currency,List<Transaction>> transactionsByCurrencies = new HashMap<>();
+        for (Transaction t: transactions) {
+            Currency currency = t.getCurrency();
+            List<Transaction> transactionsForCurrency = transactionsByCurrencies.get(currency);
+            if(transactionsForCurrency==null){
+                transactionsForCurrency=new ArrayList<>();
+                transactionsByCurrencies.put(currency,transactionsForCurrency);
+            }
+            transactionsForCurrency.add(t);
+        }
+        //grouping transaction by currency : stream
+        Map<Currency,List<Transaction>> transactionByCurrenciesStream = transactions.stream().collect(Collectors.groupingBy(Transaction::getCurrency));
+
+
+
     }
 }

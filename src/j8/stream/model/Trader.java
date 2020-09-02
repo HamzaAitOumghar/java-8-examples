@@ -1,4 +1,4 @@
-package j8.stream;
+package j8.stream.model;
 
 public class Trader {
     private final String name;
